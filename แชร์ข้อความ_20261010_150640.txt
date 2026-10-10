@@ -1,0 +1,321 @@
+```html
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชุมชนช่วยเหลือการตัดต่อ - กฎและข้อปฏิบัติ</title>
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#090d16',
+                        cardBg: 'rgba(255, 255, 255, 0.03)',
+                        cardBorder: 'rgba(255, 255, 255, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 font-sans min-h-screen selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Glowing Background Effects -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full filter blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-fuchsia-600/15 rounded-full filter blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-10 left-1/3 w-96 h-96 bg-cyan-600/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Header Section -->
+    <header class="relative pt-12 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center animate-fade-in">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span>Video Editing Support Community</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+            กฎระเบียบ <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">ชุมชนช่วยเหลือการตัดต่อ</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base">
+            ศึกษาและปฏิบัติตามกฎ 5 ข้อด้านล่างนี้ พร้อมทั้งเลือกหรือตรวจเช็กไฟล์วิดีโอก่อนส่งขอความช่วยเหลือ
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 space-y-12">
+        
+        <!-- Rules Grid Section (5 Cards) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in" style="animation-delay: 0.1s;">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">กฎข้อที่ 1</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">วัตถุประสงค์หลักของกลุ่ม</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        กลุ่มนี้เป็นการช่วยเหลือการตัดต่อ แลกเปลี่ยนความรู้ และแก้ไขปัญหาวิดีโอร่วมกัน
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in" style="animation-delay: 0.2s;">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">กฎข้อที่ 2</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">ขอความช่วยเหลือทั่วไป</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                        เวลาต้องการความช่วยเหลือให้พิมพ์คำสั่งแล้วส่งไฟล์ทั้งวิดีโอ
+                    </p>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-lg p-2.5 flex items-center justify-between gap-2">
+                        <code class="text-xs font-mono text-purple-300">-/ช่วยตัดต่อ</code>
+                        <button onclick="copyCommand('-/ช่วยตัดต่อ', 'คัดลอกคำสั่งทั่วไปแล้ว!')" class="shrink-0 px-2.5 py-1 bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium rounded transition-colors">
+                            คัดลอก
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in" style="animation-delay: 0.3s;">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">กฎข้อที่ 3</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">คลิปความละเอียดสูง / 3 มิติ</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                        ถ้าเป็นคลิปที่ใช้ความละเอียดสูง หรือคลิป 3 มิติ ต้องพิมพ์คำสั่งระบุเฉพาะ
+                    </p>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-lg p-2.5 flex items-center justify-between gap-2">
+                        <code class="text-xs font-mono text-cyan-300">(ช่วยเหลือการตัดต่อ 3 มิติ)</code>
+                        <button onclick="copyCommand('(ช่วยเหลือการตัดต่อ 3 มิติ)', 'คัดลอกคำสั่ง 3 มิติแล้ว!')" class="shrink-0 px-2.5 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded transition-colors">
+                            คัดลอก
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in" style="animation-delay: 0.4s;">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">กฎข้อที่ 4</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">การเชิญคนเข้าร่วม Server</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        สามารถเชิญคนเข้าร่วม server นี้ได้ แต่ต้องได้รับอนุญาตก่อนจาก Admin หรือผู้สร้างเท่านั้น
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in lg:col-span-2" style="animation-delay: 0.5s;">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">กฎข้อที่ 5</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">มารยาทในการสื่อสาร</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        ที่นี่ห้ามพูดคำหยาบคาย ให้เกียรติและสร้างสภาพแวดล้อมที่เป็นมิตรต่อสมาชิกทุกคนในกลุ่ม
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Video Upload & Interactive Preview Section -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 animate-fade-in border-indigo-500/30" style="animation-delay: 0.6s;">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        ส่วนเลือกไฟล์และเล่นวิดีโอตัวอย่าง
+                    </h2>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">
+                        สามารถเลือกวิดีโอจากเครื่องของคุณเพื่อตรวจสอบความถูกต้องของไฟล์ก่อนส่งขอความช่วยเหลือ
+                    </p>
+                </div>
+            </div>
+
+            <!-- File Select Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                
+                <div class="w-full">
+                    <label for="video-input" class="flex flex-col items-center justify-center w-full h-52 border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-xl cursor-pointer bg-slate-900/50 hover:bg-slate-900/80 transition-all group">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
+                            <svg class="w-10 h-10 mb-3 text-slate-500 group-hover:text-indigo-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                            <p class="mb-1 text-sm font-semibold text-slate-300 group-hover:text-white">กดที่นี่เพื่อเลือกไฟล์วิดีโอ</p>
+                            <p class="text-xs text-slate-500">รองรับไฟล์ MP4, MOV, WEBM, MKV</p>
+                        </div>
+                        <input id="video-input" type="file" accept="video/*" class="hidden" onchange="handleFileSelect(event)" />
+                    </label>
+                </div>
+
+                <!-- Video Preview Box -->
+                <div class="w-full flex flex-col items-center justify-center bg-slate-950/80 border border-slate-800 rounded-xl p-4 min-h-[208px]">
+                    <div id="no-video-placeholder" class="text-center text-slate-500 py-8">
+                        <svg class="w-12 h-12 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <p class="text-xs">ยังไม่มีไฟล์วิดีโอถูกเลือก</p>
+                    </div>
+
+                    <div id="video-preview-container" class="hidden w-full space-y-3">
+                        <video id="video-player" controls class="w-full max-h-60 rounded-lg bg-black border border-slate-800 shadow-md"></video>
+                        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+                            <span id="file-name" class="font-medium text-slate-200 truncate max-w-[200px] sm:max-w-[300px]"></span>
+                            <span id="file-size" class="shrink-0 text-indigo-400 font-mono"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800/80 bg-slate-950/40 py-6 text-center text-slate-500 text-xs">
+        <p>© 2026 ชุมชนช่วยเหลือการตัดต่อ (Video Editing Support Community)</p>
+    </footer>
+
+    <script>
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('video/')) {
+                showToast('กรุณาเลือกไฟล์วิดีโอเท่านั้น!', 'error');
+                return;
+            }
+
+            const videoPlayer = document.getElementById('video-player');
+            const previewContainer = document.getElementById('video-preview-container');
+            const placeholder = document.getElementById('no-video-placeholder');
+            const fileNameElem = document.getElementById('file-name');
+            const fileSizeElem = document.getElementById('file-size');
+
+            // Create Object URL for selected video file
+            const videoURL = URL.createObjectURL(file);
+            videoPlayer.src = videoURL;
+
+            // Display file metadata
+            fileNameElem.textContent = file.name;
+            fileSizeElem.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+
+            // Show player
+            placeholder.classList.add('hidden');
+            previewContainer.classList.remove('hidden');
+
+            showToast('โหลดวิดีโอตัวอย่างเรียบร้อยแล้ว', 'success');
+        }
+
+        function copyCommand(text, message) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast(message, 'success');
+            } catch (err) {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => showToast(message, 'success'));
+                } else {
+                    showToast('เกิดข้อผิดพลาดในการคัดลอก', 'error');
+                }
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-emerald-950/90 border-emerald-500/40 text-emerald-200' : 'bg-rose-950/90 border-rose-500/40 text-rose-200';
+            const iconSvg = type === 'success' 
+                ? '<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+                : '<svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+
+            toast.className = `pointer-events-auto flex items-center gap-2 px-3 py-2.5 rounded-xl border backdrop-blur-md shadow-xl transition-all duration-300 transform translate-y-2 opacity-0 ${bgColor}`;
+            toast.innerHTML = `${iconSvg}<span class="text-xs font-medium">${message}</span>`;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            });
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+```
